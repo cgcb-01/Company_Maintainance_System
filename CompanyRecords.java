@@ -1,7 +1,9 @@
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.*;
-import java.nio.file.Files;
-import java.nio.file.Paths;
+
 
 public class CompanyRecords {
 
@@ -10,7 +12,8 @@ private class Employee{
     String personalEmail;
     String OfficialEmailId;
     String branchCode;
-    String empId;//managerId with:mng, permanent employee with:pemp, contract employee with:cemp
+    String empId;
+    //managerId with:mng, permanent employee with:pemp, contract employee with:cemp
     String phoneNumber;
     String address;
     String dateOfJoining;
@@ -122,7 +125,12 @@ private class userHandler {
         emailId = sc.nextLine();
         String password;
         System.out.println("Create your Password: ");
-        password = sc.nextLine();// decrypt and verify with te stored password.
+        password = sc.nextLine();
+        //if the emailId is of an Employee
+        if(emailId.contains("@cgcb.ac.in"))
+        {
+            
+        }
         if(emailId.contains("mng"))
             {
                 //search in manager file
@@ -150,15 +158,48 @@ private class userHandler {
             System.out.println("Please use a personal Email Id to Register.\n If you are an Employee Please Login using your Company Email ID.");
         }
         else{
-            //insert the name in the outsideUser text file.
-        }
-        String password;
-        System.out.println("Create your Password: ");
-        password = sc.nextLine();
-        //store the emailId and password in the users file. Segregate the logs for users in some way like pne file sould not hold all the users data. I couldnt think of a way right now. Also encrypt te password.
-    }
+            String password;
+            System.out.println("Create your Password: ");
+            password = sc.nextLine();
+            //Checking if the user is already present in the users file.
+            List<List<String>> usersList = new ArrayList<>();
+            try (BufferedReader reader = new BufferedReader(new FileReader("users.txt"))) {
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    String[] blocks = line.split("\t");
+                    usersList.add(Arrays.asList(blocks));
+                }
+            } catch (IOException e) {
+                System.out.println("An Unexpected error occurred. Please try again later.");
+            }
 
-}
+            boolean alreadyRegistered = false;
+            for(int i = 0; i < usersList.size(); i++)
+            {
+                List<String> user = usersList.get(i);
+                if(!user.isEmpty() && user.get(0).equals(emailId))
+                {
+                    alreadyRegistered = true;
+                    break;
+                }
+            }
+
+            if(alreadyRegistered)
+            {
+                System.out.println("The Email ID is already registered. Please Login.");
+                login();
+                return;
+            }
+
+            try (FileWriter usersFile = new FileWriter("users.txt", true)) {
+                usersFile.write(emailId.trim() + "\t" + password.trim() + System.lineSeparator());
+            } catch(IOException e) {
+                System.out.println("Error in registering user. Please try again later.");
+            }
+        }
+    }// end of register function
+
+}// end of userhandler class
 
     public static void main(String[] args)
     { 
@@ -180,15 +221,15 @@ private class userHandler {
             switch(choice)
             {
                 case 1:
-                    try{
-                        FileHandler filehandler=new FileHandler();
-                        String info=filehandler.readfile("info.txt");
-                        System.out.println(info);
-                    }
-                    catch(Exception e)
-                    {
-                        System.out.println(" Our Site in under Maintainance.\n Please try Later. ");
-                    }
+                    try (BufferedReader reader = new BufferedReader(new FileReader("info.txt"))) {
+	            String line;
+	            while ((line = reader.readLine()) != null) {
+	                System.out.println(line);
+	            }
+	        } catch (IOException e) {
+	            System.out.println("An error occurred while reading: " + e.getMessage());
+	        }
+
                     break;
                 case 2:
                     System.out.println("Login Feature Coming Soon....");
@@ -210,9 +251,4 @@ private class userHandler {
     }
 }
 
-class FileHandler {
-    public String readfile(String filename) throws IOException {
-        return Files.readString(Paths.get(filename));
-    }
-}
 
