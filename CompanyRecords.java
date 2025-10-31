@@ -7,6 +7,21 @@ import java.util.*;
 
 public class CompanyRecords {
 
+private class handleDatabase{
+    void searchFile()
+    {
+
+    }
+    void readFile()
+    {
+
+    }
+    void writeFile()
+    {
+
+    }
+}
+handleDatabase fileHandler = new handleDatabase();
 private class Employee{
     String name;
     String personalEmail;
@@ -19,7 +34,7 @@ private class Employee{
     String dateOfJoining;
     String dateOfBirth;
     String designation;
-    long  baseSalary=20000;
+    private long  baseSalary=20000;
 }
 private class Manager extends Employee{
     String managedBranch;
@@ -102,20 +117,57 @@ private class CEO {
 }
 private class ContractEmployee extends Employee{
     String contractDuration;
-    String agencyName;
-    public void viewPayslip()
+    private String salary;
+    ContractEmployee(String Details)
     {
-        //code to view payslip
+        String[] parts=Details.split("\t");
+        super.empId=parts[0];
+        super.name=parts[1];
+        super.OfficialEmailId=parts[2];
+        super.branchCode=parts[3];
+        super.phoneNumber=parts[4];
+        super.address=parts[5];
+        super.dateOfJoining=parts[6];
+        super.dateOfBirth=parts[7];
+        super.designation=parts[8];
+        this.contractDuration=parts[9];
+        this.salary=parts[10];
     }
     public void applyLeave()
     {
-        //code to apply leave
+        String LeaveDateStart;
+        String LeaveDateEnd;
+        String Reason;
+        boolean isApproved=false;
+        Scanner sc = new Scanner (System.in);
+        System.out.println("Enter Leave Start Date:");
+        LeaveDateStart = sc.nextLine();
+        System.out.println("Enter Leave End Date:");    
+        LeaveDateEnd = sc.nextLine();
+        System.out.println("Enter Reason for Leave:");
+        Reason = sc.nextLine();
+        String entry= super.empId+"\t"+LeaveDateStart+"\t"+LeaveDateEnd+"\t"+Reason+"\t"+isApproved+"\n";
+        fileHandler.writeFile();
     }
-    public void viewAttendance()
+
+    public void viewProfile()
     {
-        //code to view attendance
+        System.out.println("Employee ID: "+super.empId);
+        System.out.println("Name: "+super.name);
+        System.out.println("Official Email ID: "+super.OfficialEmailId);
+        System.out.println("Branch Code: "+super.branchCode);
+        System.out.println("Phone Number: "+super.phoneNumber);
+        System.out.println("Address: "+super.address);
+        System.out.println("Date Of Joining: "+super.dateOfJoining);
+        System.out.println("Date Of Birth: "+super.dateOfBirth);
+        System.out.println("Designation: "+super.designation);
+        System.out.println("Contract Duration: "+this.contractDuration);
     }
 }
+
+
+//-----------------------------------------------------
+//----------------------------------------------------------
 private class userHandler {
     void login()
     {
@@ -124,29 +176,36 @@ private class userHandler {
         System.out.println("Enter your Email ID: ");
         emailId = sc.nextLine();
         String password;
-        System.out.println("Create your Password: ");
+        System.out.println("Enter your Password: ");
         password = sc.nextLine();
+        String pathFile="";
         //if the emailId is of an Employee
         if(emailId.contains("@cgcb.ac.in"))
         {
-            
-        }
+            String[] parts=emailId.split(".");
+            String branchCode=parts[1];
         if(emailId.contains("mng"))
             {
-                //search in manager file
+                pathFile=branchCode+"_mng.txt";
+
             }
             else if(emailId.contains("pemp"))
             {
-                //search in permanent employee file
-                //take out the branch code from emailId.
+                 pathFile=branchCode+"_emp.txt";
                 //Search in that particular branch file
             }
             else if(emailId.contains("cemp"))
             {
-                //search in contract employee file
-                //take out the branch code from emailId.
+                 pathFile=branchCode+"_cemp.txt";
+              
                 //Search in that particular branch file
             }
+        }
+        else
+        {
+            //Search in users file.
+            pathFile="users.txt";
+        }
     }
     void register(){
         String emailId;
