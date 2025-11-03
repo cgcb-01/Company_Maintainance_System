@@ -8,17 +8,18 @@ import java.util.*;
 public class CompanyRecords {
 
 private class handleDatabase{
-    void searchFile()
+    String searchInFile(String pathFile, String searchKey)
+    {
+        String s="";
+        return s;
+    }
+    void readFile(String pathFile)
     {
 
     }
-    void readFile()
+    void writeFile(String pathFile, String entry)
     {
-
-    }
-    void writeFile()
-    {
-
+        
     }
 }
 handleDatabase fileHandler = new handleDatabase();
@@ -74,10 +75,9 @@ private class Manager extends Employee{
 private class PermanentEmployee extends Employee{
     private String bankAccountNumber;
     private String salary;
-    //override te salary of employee wit extra.
     public void viewOtherEmployeeDetails()
     {
-        //will view other employee details but not sensitive data like bank account and salary
+       
     }
     public void viewPayslip()
     {
@@ -115,6 +115,9 @@ private class CEO {
         // Should enter branch code, branch address, branch phone number, branch manager details etc. and create new file for that branch for employee and contract employee. And insert that detail in the details file of that branch. File locations must be encrypted. The file of eac branch should ave the total no of permanent and contract employees also.
     }
 }
+
+
+//-----------------------------DONE------------------------
 private class ContractEmployee extends Employee{
     String contractDuration;
     private String salary;
@@ -146,10 +149,20 @@ private class ContractEmployee extends Employee{
         LeaveDateEnd = sc.nextLine();
         System.out.println("Enter Reason for Leave:");
         Reason = sc.nextLine();
+        String pathFile=super.branchCode+"_cemp_leave.txt";
         String entry= super.empId+"\t"+LeaveDateStart+"\t"+LeaveDateEnd+"\t"+Reason+"\t"+isApproved+"\n";
-        fileHandler.writeFile();
+        fileHandler.writeFile(pathFile, entry);
     }
-
+    public void viewLeaveStatus()
+    {
+        String filename=super.branchCode+"cemp_leave.txt";
+        String LeaveStatus = fileHandler.searchInFile(filename,super.empId);
+        System.out.println(LeaveStatus);
+    }
+    public void viewPayslip()
+    {
+        //Checking the payslip status from the paySlip transfer file managed by the Manager.
+    }
     public void viewProfile()
     {
         System.out.println("Employee ID: "+super.empId);
@@ -286,9 +299,8 @@ private class userHandler {
 	                System.out.println(line);
 	            }
 	        } catch (IOException e) {
-	            System.out.println("An error occurred while reading: " + e.getMessage());
+	            System.out.println("An error occured in loading the information");
 	        }
-
                     break;
                 case 2:
                     System.out.println("Login Feature Coming Soon....");
