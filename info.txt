@@ -1,53 +1,47 @@
 ========================================================
-           CGCB - WE FOR A MODERN INDIA
-
-------------------------------------------------
-COMPANY: CGCB Software Solutions 
+ CGCB - WE FOR A MODERN INDIA
+========================================================
 Your Personal AI Guide to the World's Wonders.
-------------------------------------------------
 
------------------------------
-      :: ABOUT US ::
------------------------------
+=============================================================================================
+:: ABOUT US ::
 
 CGCB is a pioneering software company dedicated to revolutionizing the
 tourism industry. We believe that travel should be immersive, educational,
 and seamlessly supported by technology. Our mission is to connect travelers
 with the heart of their destinations.
 
-------------------------------------------------
-     :: OUR FLAGSHIP PRODUCT: 'AuraGuide' ::
-------------------------------------------------
+------------------------------------------
+:: OUR FLAGSHIP PRODUCT: 
+------------------------------------------
 
 AuraGuide is our all-in-one smart tourism application that brings
 history, culture, and navigation to life.
 
------------------------------
-    :: Core Features ::
------------------------------
+=============================================================================================
+CORE FEATURES
 
-    The Digital Compass:
+The Digital Compass:
 
-    Full details on millions of tourist places.
+Full details on millions of tourist places.
 
-    Deep dives into local history and cultural significance.
+Deep dives into local history and cultural significance.
 
-    Up-to-date listings of services (restaurants, hotels, transport).
+Up-to-date listings of services (restaurants, hotels, transport).
 
-    The Artificial Guide (Your AI Travel Companion):
+The Artificial Guide (Your AI Travel Companion):
 
-    Real-time Talking Support.
+Real-time Talking Support.
 
-    Uses your phone's camera and microphone to understand your
-    environment and your spoken questions.
+Uses your phone's camera and microphone to understand your
+environment and your spoken questions.
 
 Point your camera at a building, and the Guide will tell you
 its history. Ask 'Where is the best local food?' and it will
 guide you. It's your personal, interactive tour guide, 24/7.
 
-------------------------------
-     :: OUR VISION ::
-------------------------------
+===================================================================================
+:: OUR VISION ::
 
 To create a world where every journey is a story, and every traveler
 has a knowledgeable friend to guide them. We are CGCB - building

@@ -1,0 +1,3 @@
+BranchCode	Address	Phone	ManagerID	ManagerName	AccessCode	EmployeeFile	ContractEmployeeFile	BranchFile	LeaveFile	PayslipFile
+BNG	Bangalore	7003191154	mngBNG001	abcd	QaMwIj6zX3U/W9Cw	tWHqdGKlT8sz/KXM.txt	uFSfuyy1UbGWUONt.txt	oyuinGNbTQ9G2HxH.txt	K2a/qzBbfSK59zaK.txt	3STolOi42qUOi3e3.txt
+CHN	Chennai	7003191154	mngCHN001	abcde	eHr3B7cvqgOexi1D	Nn+36dV8zAzD76HD.txt	0L9Vhl6OttipGMr3.txt	yWUhLKDgbhE4Uci1.txt	Fn1FAoM02H0QzmLw.txt	4Uca5SR8gkyT8Jre.txt

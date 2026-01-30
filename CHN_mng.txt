@@ -1,0 +1,2 @@
+EmployeeID	Name	OfficialEmail	BranchCode	Phone	Address	DateOfJoining	DateOfBirth	Designation	ManagedBranch	AccessCode
+mngCHN001	abcde	abcde@CHN.cgcb.ac.in	CHN	3457802345	Chennai	2025-11-07	07-07-2005	Manager	CHN	eHr3B7cvqgOexi1D

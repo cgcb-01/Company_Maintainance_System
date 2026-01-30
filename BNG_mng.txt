@@ -1,0 +1,2 @@
+EmployeeID	Name	OfficialEmail	BranchCode	Phone	Address	DateOfJoining	DateOfBirth	Designation	ManagedBranch	AccessCode
+mngBNG001	abcd	abcd@BNG.cgcb.ac.in	BNG	17687293879	Bangalore	2025-11-07	07-07-2005	Manager	BNG	QaMwIj6zX3U/W9Cw
